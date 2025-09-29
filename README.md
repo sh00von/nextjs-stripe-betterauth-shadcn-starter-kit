@@ -1,5 +1,7 @@
 # 🚀 SaaS Starter Kit
 
+![SaaS Starter Kit Banner](banner.png)
+
 A complete, production-ready SaaS starter kit built with **Next.js 15**, **React 19**, **TypeScript**, **Better Auth**, **Stripe**, and **shadcn/ui** components. Get your SaaS up and running in minutes!
 
 ## ✨ Features
@@ -138,67 +140,48 @@ Use Stripe's test card numbers:
 └── public/                       # Static assets
 ```
 
-## 🔧 Key Components
+## 🎯 What's Included
 
-### 🔐 Authentication
-- **Better Auth** for secure authentication
-- Email/password and social login support
-- Session management with database persistence
-- Protected routes and middleware
+| Feature | Technology | Description |
+|---------|------------|-------------|
+| **Auth** | Better Auth | Email/password + social login |
+| **Payments** | Stripe | Subscriptions + webhooks |
+| **UI** | shadcn/ui + Tailwind | Modern, responsive design |
+| **Database** | Prisma + PostgreSQL | Type-safe database access |
+| **Deployment** | Vercel Ready | One-click deployment |
 
-### 💳 Payments
-- **Stripe** integration for subscriptions
-- Three pricing tiers (Starter, Pro, Enterprise)
-- Webhook handling for subscription events
-- Payment verification with fallback systems
-- Demo price support for testing
+## 🚀 Deploy to Vercel
 
-### 🎨 UI Components
-- **shadcn/ui** for consistent, accessible components
-- **Tailwind CSS** for styling
-- Responsive design with mobile-first approach
-- Dark/light mode support
-- Conditional navigation system
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/saas-starter-kit)
 
-## 🛠️ Customization
+1. **Fork** this repository
+2. **Connect** to Vercel
+3. **Add** environment variables
+4. **Deploy** 🎉
 
-### Adding New Features
-1. **Components**: Create new components in `components/` directory
-2. **API Routes**: Add new endpoints in `app/api/` directory
-3. **Database**: Update schema in `prisma/schema.prisma`
-4. **Apply Changes**: Run `npx prisma db push` to apply database changes
+## 🛠️ Customize
 
-### 🎨 Styling
-- **Global Styles**: Modify `app/globals.css` for global styles
-- **Component Styles**: Use Tailwind classes for component styling
-- **Theme**: Customize shadcn/ui theme in `components.json`
-- **Colors**: Update CSS variables for brand colors
+### Add Features
+```bash
+# New component
+components/your-feature/
 
-### 🗄️ Database
-- **Schema**: Update `prisma/schema.prisma` for data models
-- **Generate**: Run `npx prisma generate` after schema changes
-- **Studio**: Use `npx prisma studio` to view/edit data
-- **Migrations**: Use `npx prisma migrate dev` for production migrations
+# New API route  
+app/api/your-endpoint/
 
-### 💳 Stripe Configuration
-- **Products**: Create products in Stripe dashboard
-- **Prices**: Set up pricing for each product
-- **Webhooks**: Configure webhook endpoints
-- **Environment**: Update price IDs in `.env.local`
+# Database changes
+npx prisma db push
+```
 
-## 🚀 Deployment
+### Styling
+- **Global**: `app/globals.css`
+- **Components**: Tailwind classes
+- **Theme**: `components.json`
 
-### Vercel (Recommended)
-1. **Push Code**: Push your code to GitHub
-2. **Connect**: Connect your repository to Vercel
-3. **Environment**: Add environment variables in Vercel dashboard
-4. **Deploy**: Deploy and enjoy! 🎉
-
-### Other Platforms
-- **Railway**: Great for full-stack apps with database
-- **Render**: Good alternative to Vercel
-- **AWS/GCP/Azure**: For enterprise deployments
-- **Netlify**: Good for static sites with serverless functions
+### Database
+- **Schema**: `prisma/schema.prisma`
+- **Studio**: `npx prisma studio`
+- **Generate**: `npx prisma generate`
 
 ## 📋 Environment Variables
 
