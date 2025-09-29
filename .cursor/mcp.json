@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "stripe": {
+      "command": "npx",
+      "args": [
+          "-y",
+          "@stripe/mcp",
+          "--tools=all",
+          "--api-key=sk_test_51S80rN7Cch6WMpJPVTrBuvC1WYpoSqNAitYofqGaEWhPSHUWDYn00HgAm2tizTpO81CqQROKXo1TlCOHJYKaIdpm00QELr9cX9"
+      ]
+    }
+  }
+}
