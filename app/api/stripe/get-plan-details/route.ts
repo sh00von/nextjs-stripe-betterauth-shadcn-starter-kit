@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Get the product name
-    const product = price.product as any;
+    const product = price.product as { name?: string };
     const productName = product?.name || 'Unknown Plan';
 
     // Determine plan type based on product name or amount

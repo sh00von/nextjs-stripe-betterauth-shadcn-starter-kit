@@ -21,8 +21,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { useAuth } from "@/components/auth/auth-provider";
-import { Menu, X, Zap, CreditCard, Users, Settings } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Menu, X, Zap } from "lucide-react";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

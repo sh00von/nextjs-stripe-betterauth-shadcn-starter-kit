@@ -1,15 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const response = await auth.api.signOut({
       headers: await headers(),
     });
 
     return NextResponse.json(response);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error signing out:", error);
     
     return NextResponse.json(

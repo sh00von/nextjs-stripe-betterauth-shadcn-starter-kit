@@ -171,8 +171,8 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ url: checkoutSession.url });
-  } catch (error) {
-    console.error("Error creating checkout session:", error);
+  } catch {
+    console.error("Error creating checkout session");
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

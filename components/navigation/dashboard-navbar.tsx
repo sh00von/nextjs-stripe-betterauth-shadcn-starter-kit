@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/components/auth/auth-provider";
-import { Menu, X, Home, CreditCard, Settings, LogOut } from "lucide-react";
+import { Menu, X, Home, Settings, LogOut } from "lucide-react";
 
 export const DashboardNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);

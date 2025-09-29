@@ -17,7 +17,7 @@ interface StripeCheckoutProps {
 
 export function StripeCheckout({ 
   priceId, 
-  planName, 
+  planName: _, 
   isPopular = false, 
   className = "",
   children 

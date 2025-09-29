@@ -3,8 +3,10 @@ import { stripe } from "@/lib/stripe";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
+  let sessionId: string | undefined;
   try {
-    const { sessionId } = await request.json();
+    const body = await request.json();
+    sessionId = body.sessionId;
     
     console.log("=== VERIFY SESSION API CALLED ===");
     console.log("Session ID:", sessionId);
@@ -44,7 +46,12 @@ export async function POST(request: NextRequest) {
     
     if (session.payment_status === 'paid' && session.subscription) {
       console.log("✅ Payment successful, processing subscription...");
-      const subscription = session.subscription as any;
+      const subscription = session.subscription as unknown as { 
+        id: string; 
+        status: string; 
+        items: { data: Array<{ price: { id: string } }> }; 
+        current_period_end: number; 
+      };
       
       console.log("Subscription details:", {
         id: subscription.id,

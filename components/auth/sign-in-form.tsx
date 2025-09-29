@@ -26,7 +26,7 @@ export const SignInForm = () => {
 
     try {
       await signIn(email, password);
-    } catch (err) {
+    } catch {
       // Error is handled by the auth provider with toast
     } finally {
       setLoading(false);

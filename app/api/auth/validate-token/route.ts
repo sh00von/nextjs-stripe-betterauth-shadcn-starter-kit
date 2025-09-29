@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
       session: session.session
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error validating token:", error);
     return NextResponse.json(
       { error: "Token validation failed" },

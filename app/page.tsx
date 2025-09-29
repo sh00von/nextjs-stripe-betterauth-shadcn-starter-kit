@@ -3,43 +3,19 @@
 import * as React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PRICING_PLANS } from "@/lib/pricing";
 import { StripeCheckout } from "@/components/pricing/stripe-checkout";
 import { 
   ArrowRight, 
   CheckCircle, 
-  Zap, 
   Shield, 
-  CreditCard, 
-  Users, 
-  Settings,
-  Database,
   Globe,
-  Lock,
   Sparkles,
-  Rocket,
-  Code,
-  Palette,
   Star,
-  TrendingUp,
-  Award,
-  Clock,
-  Target,
-  Lightbulb,
-  Heart,
   MessageSquare,
-  BarChart3,
   Layers,
-  Cpu,
-  Wifi,
-  Smartphone,
-  Monitor,
-  Server,
-  Play,
-  Download,
-  ExternalLink
+  CreditCard
 } from "lucide-react";
 
 // SVG Components
@@ -140,7 +116,7 @@ export default function Home() {
             </h1>
                 <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-lg leading-relaxed mx-auto lg:mx-0 animate-in fade-in duration-1000 delay-500">
                   The complete NextJS BetterAuth Stripe Shadcnui starter kit for modern SaaS applications. 
-                  From authentication to payments, we've got you covered.
+                  From authentication to payments, we&apos;ve got you covered.
                 </p>
               </div>
               
@@ -504,7 +480,7 @@ export default function Home() {
           {/* Pricing Cards - Mobile Optimized */}
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-6">
-              {PRICING_PLANS.map((plan, index) => (
+                      {PRICING_PLANS.map((plan) => (
                 <div key={plan.id} className={`relative group ${
                   plan.popular ? 'lg:-mt-8 lg:mb-8' : ''
                 }`}>
@@ -617,7 +593,7 @@ export default function Home() {
                     Need Custom Development?
                   </h3>
                   <p className="text-primary-foreground/80 text-lg">
-                    Let's discuss your project requirements
+                    Let&apos;s discuss your project requirements
                   </p>
                 </div>
                 

@@ -9,21 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
   CheckCircle, 
-  Users, 
-  Zap, 
-  TrendingUp, 
-  DollarSign, 
-  Activity,
-  Calendar,
   Settings,
-  Bell,
-  Search,
-  Plus,
-  ArrowUpRight,
   Package,
   CreditCard,
-  BarChart3,
-  User
+  User,
+  Zap,
+  BarChart3
 } from "lucide-react";
 import { showToast } from "@/lib/toast";
 import Link from "next/link";
@@ -32,8 +23,16 @@ export default function DashboardPage() {
   const { session, loading } = useAuth();
   const searchParams = useSearchParams();
   const { profile, loading: profileLoading, refetch: refetchProfile } = useProfile();
-  const [subscription, setSubscription] = useState<any>(null);
-  const [subscriptionLoading, setSubscriptionLoading] = useState(true);
+  const [subscription, setSubscription] = useState<{
+    id: string;
+    userId: string;
+    stripeCustomerId: string;
+    stripeSubscriptionId: string;
+    stripePriceId: string;
+    stripeStatus: string;
+    stripeCurrentPeriodEnd: Date;
+  } | null>(null);
+  const [, setSubscriptionLoading] = useState(true);
   const [planName, setPlanName] = useState<string>('Active Plan');
 
   // Token validation function
@@ -447,7 +446,7 @@ export default function DashboardPage() {
                     <div>
                       <h3 className="text-lg font-bold text-primary mb-2">Ready to Build Your Next Project?</h3>
                       <p className="text-sm text-muted-foreground">
-                        Let's discuss your requirements and bring your ideas to life
+                        Let&apos;s discuss your requirements and bring your ideas to life
                       </p>
                     </div>
                     

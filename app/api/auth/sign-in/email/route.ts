@@ -22,21 +22,21 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(response);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error signing in:", error);
     
     // Handle Better Auth API errors
-    if (error?.status === 'BAD_REQUEST' && error?.body?.message) {
+    if (error && typeof error === 'object' && 'status' in error && error.status === 'BAD_REQUEST' && 'body' in error && error.body && typeof error.body === 'object' && 'message' in error.body) {
       return NextResponse.json(
-        { error: error.body.message },
+        { error: (error.body as { message: string }).message },
         { status: 400 }
       );
     }
     
     // Handle other API errors
-    if (error?.message) {
+    if (error && typeof error === 'object' && 'message' in error) {
       return NextResponse.json(
-        { error: error.message },
+        { error: (error as { message: string }).message },
         { status: 400 }
       );
     }

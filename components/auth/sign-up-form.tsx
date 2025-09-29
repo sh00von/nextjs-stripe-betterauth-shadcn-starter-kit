@@ -33,7 +33,7 @@ export const SignUpForm = () => {
 
     try {
       await signUp(email, password, name);
-    } catch (err) {
+    } catch {
       // Error is handled by the auth provider with toast
     } finally {
       setLoading(false);

@@ -15,6 +15,11 @@
           "--tools=all",
           "--api-key=sk_test_51S80rN7Cch6WMpJPVTrBuvC1WYpoSqNAitYofqGaEWhPSHUWDYn00HgAm2tizTpO81CqQROKXo1TlCOHJYKaIdpm00QELr9cX9"
       ]
-    }
+    },
+    "eslint": {
+			"command": "npx",
+			"args": ["@eslint/mcp@latest"],
+			"env": {}
+		}
   }
 }

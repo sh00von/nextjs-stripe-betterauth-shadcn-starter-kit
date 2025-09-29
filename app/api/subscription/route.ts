@@ -10,11 +10,11 @@ export async function GET(request: NextRequest) {
       sessionResponse = await auth.api.getSession({
         headers: request.headers,
       });
-    } catch (error) {
+    } catch {
       console.log("Better Auth session failed");
     }
 
-    let session = sessionResponse;
+    const session = sessionResponse;
 
     if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

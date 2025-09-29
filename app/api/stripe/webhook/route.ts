@@ -68,12 +68,18 @@ export async function POST(request: NextRequest) {
         // Get the subscription details from Stripe
         if (session.subscription) {
           console.log("📋 Retrieving subscription details from Stripe...");
-          const subscription = await stripe.subscriptions.retrieve(session.subscription as string);
+          const subscription = await stripe.subscriptions.retrieve(session.subscription as string) as unknown as {
+            customer: string; 
+            id: string; 
+            status: string; 
+            items: { data: Array<{ price: { id: string } }> }; 
+            current_period_end: number; 
+          };
           console.log("Retrieved subscription:", {
             id: subscription.id,
             status: subscription.status,
             priceId: subscription.items.data[0]?.price.id,
-            currentPeriodEnd: (subscription as any).current_period_end,
+            currentPeriodEnd: subscription.current_period_end,
             customer: subscription.customer
           });
           
@@ -88,7 +94,7 @@ export async function POST(request: NextRequest) {
                 stripeSubscriptionId: subscription.id,
                 stripePriceId: subscription.items.data[0]?.price.id,
                 stripeStatus: subscription.status,
-                stripeCurrentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
+                stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
               },
               create: {
                 userId: session.metadata?.userId || "",
@@ -96,7 +102,7 @@ export async function POST(request: NextRequest) {
                 stripeSubscriptionId: subscription.id,
                 stripePriceId: subscription.items.data[0]?.price.id,
                 stripeStatus: subscription.status,
-                stripeCurrentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
+                stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
               },
             });
             
@@ -128,7 +134,11 @@ export async function POST(request: NextRequest) {
         break;
 
       case "customer.subscription.updated":
-        const updatedSubscription = event.data.object;
+        const updatedSubscription = event.data.object as unknown as { 
+          id: string; 
+          status: string; 
+          current_period_end: number; 
+        };
         console.log("Subscription updated:", updatedSubscription.id);
         
         // Update subscription in database
@@ -138,13 +148,13 @@ export async function POST(request: NextRequest) {
           },
           data: {
             stripeStatus: updatedSubscription.status,
-            stripeCurrentPeriodEnd: new Date((updatedSubscription as any).current_period_end * 1000),
+            stripeCurrentPeriodEnd: new Date(updatedSubscription.current_period_end * 1000),
           },
         });
         break;
 
       case "customer.subscription.deleted":
-        const deletedSubscription = event.data.object;
+        const deletedSubscription = event.data.object as { id: string };
         console.log("Subscription canceled:", deletedSubscription.id);
         
         // Update subscription status to canceled
