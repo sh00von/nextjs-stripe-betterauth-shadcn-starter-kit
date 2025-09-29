@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/auth/auth-provider";
 import { useProfile } from "@/hooks/use-profile";
@@ -19,7 +19,7 @@ import {
 import { showToast } from "@/lib/toast";
 import Link from "next/link";
 
-export default function DashboardPage() {
+function DashboardContent() {
   const { session, loading } = useAuth();
   const searchParams = useSearchParams();
   const { profile, loading: profileLoading, refetch: refetchProfile } = useProfile();
@@ -599,5 +599,13 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   );
 }
